@@ -1,0 +1,24 @@
+#
+# Build/PR gating tests for libcxx
+#
+
+summary: libcxx tests for build/PR gating
+adjust:
+  - because: "Plan to be ran when either executed locally, or executed by CI system to gate a build or PR."
+    when: >-
+      trigger is defined
+      and trigger != commit
+      and trigger != build
+    enabled: false
+
+discover:
+    - name: upstream-llvm-integration-testsuite
+      how: fmf
+      url: https://src.fedoraproject.org/tests/llvm.git
+      ref: main
+      test: integration-test-suite
+execute:
+    how: tmt
+provision:
+  hardware:
+    memory: ">= 4 GiB"

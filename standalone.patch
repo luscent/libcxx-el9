@@ -1,0 +1,23 @@
+From 0ef68aab2b08915b9144ffa67b3319e3e8332445 Mon Sep 17 00:00:00 2001
+From: Nikita Popov <npopov@redhat.com>
+Date: Thu, 4 Aug 2022 12:44:15 +0200
+Subject: [PATCH] Fix standalone build
+
+---
+ libunwind/docs/CMakeLists.txt | 1 +
+ 1 files changed, 1 insertions(+)
+
+diff --git a/libunwind/docs/CMakeLists.txt b/libunwind/docs/CMakeLists.txt
+index 79b87eb03b44..eaf6f3db5223 100644
+--- a/libunwind/docs/CMakeLists.txt
++++ b/libunwind/docs/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ include(FindSphinx)
+ if (SPHINX_FOUND AND LLVM_ENABLE_SPHINX)
++  include(AddLLVM)
+   include(AddSphinxTarget)
+   if (${SPHINX_OUTPUT_HTML})
+     add_sphinx_target(html libunwind)
+-- 
+2.37.1
+
