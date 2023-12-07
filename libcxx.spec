@@ -144,6 +144,8 @@ mv %{SOURCE8} %{SOURCE9} runtimes/cmake/Modules/
 export ASMFLAGS=$CFLAGS
 
 %cmake -GNinja \
+	-DCMAKE_C_COMPILER=/usr/bin/clang \
+	-DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
 	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 	-DCMAKE_MODULE_PATH="%{_libdir}/cmake/llvm;%{_datadir}/llvm/cmake/Modules" \
 	-DCMAKE_POSITION_INDEPENDENT_CODE=ON \
